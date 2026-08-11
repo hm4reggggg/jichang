@@ -1,7 +1,7 @@
 # 翻墙|机场|不清零|VPN|梯子|高科技
 自用稳定高速机场，定期检查可用性
 ### 当前可用机场
-**检查日期：2026年8月10日**
+**检查日期：2026年8月11日**
 
 *   [魔戒1（不清零）](https://43.129.78.33:8000/register?aff=1pWspTHg#tt)  &ensp; [魔戒2（不清零）](https://47.242.128.61:8000/#/register?code=1pWspTHg#tt)  (￥19.9/130G不清零， 节点数中等，稳定，能播放YouTube 4k)
 *   [KTM1（大流量）](https://kutumu.top/#/register?code=sdUS9yvK#tt) &ensp; [KTM2（大流量）](https://kutumu.cc/#/register?code=sdUS9yvK#tt)  &ensp; [KTM3（大流量）](https://kutumu.one/#/register?code=sdUS9yvK#tt)  (大流量，跟新最新软件) （13.98元/月/1024G月，20.97元/季/500G月，量大，速度极块，注意更新最新软件）
