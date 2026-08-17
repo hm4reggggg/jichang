@@ -1,4 +1,4 @@
-# 翻墙|机场|不清零|VPN|梯子|高科技|科学上网|clash|小火箭|shadowrocket|iPhone|Android|macos|windows
+# 翻墙|机场|不清零|VPN|梯子|高科技|科学上网|clash|小火箭|shadowrocket|iPhone|Android|macOS|windows|中转站
 自用稳定高速机场，定期检查可用性
 ### 当前可用机场
 **检查日期：2026年8月17日**
