@@ -1,0 +1,10 @@
+title: "个人自用加速工具"
+tagline: "非广"
+description: ""
+lang: "zh-CN"
+
+url: "https://airforceone.top/"
+baseurl: "" 
+
+titles_from_headings:
+  enabled: false
