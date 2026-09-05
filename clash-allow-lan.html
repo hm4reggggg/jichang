@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026最新苹果手机免Shadowrocket共享翻墙与免翻替代全攻略（Windows/Mac双平台保姆级教程）</title>
+    <meta name="description" content="iPhone无法下载小火箭怎么办？本教程手把手教你2026最新免Shadowrocket翻墙方法：通过电脑端Clash局域网共享代理给手机，或使用非国区Apple ID免费下载Sing-box、Stash等替代工具，适合苹果手机小白快速上手。">
+    <meta name="keywords" content="iPhone翻墙, 苹果手机翻墙, Shadowrocket替代, Clash Verge共享局域网, Clash局域网连接, 电脑共享手机翻墙, 苹果手机免小火箭翻墙, Sing-box教程, Stash配置, 电脑代理共享给手机, 2026网络加速">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://example.com/iphone-clash-proxy-tutorial">
+    
+    <style>
+        /* ===== 设计变量 ===== */
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-soft: #dbeafe;
+            --text-color: #263143;
+            --text-muted: #64748b;
+            --heading-color: #0f172a;
+            --bg-color: #eff1f4;
+            --card-bg: #ffffff;
+            --surface: #f8fafc;
+            --surface-2: #f1f5f9;
+            --info-bg: #f4f8ff;
+            --info-border: #dce7fb;
+            --border-color: #e5e7eb;
+            --border-soft: #eef1f5;
+            --accent-color: #dc2626;
+            --danger-bg: #fef2f2;
+            --danger-text: #991b1b;
+            --warn-color: #d97706;
+            --warn-bg: #fffbeb;
+            --warn-text: #92400e;
+            --code-bg: #eef2ff;
+            --code-fg: #3730a3;
+            --code-border: #e0e7ff;
+            --ok-bg: #dcfce7;
+            --ok-fg: #15803d;
+            --no-bg: #ffe4e6;
+            --no-fg: #b91c1c;
+            --shadow-sm: 0 1px 2px rgba(15, 23, 42, .05);
+            --shadow-card: 0 0 26px rgba(15, 23, 42, .07);
+            --radius: 12px;
+            --content-width: 920px;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+        }
+
+        /* ===== 夜间模式（跟随系统） ===== */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary-color: #60a5fa;
+                --primary-dark: #93c5fd;
+                --primary-soft: #1e3a8a;
+                --text-color: #d2dae7;
+                --text-muted: #94a3b8;
+                --heading-color: #f1f5f9;
+                --bg-color: #0a0e16;
+                --card-bg: #121826;
+                --surface: #1a2130;
+                --surface-2: #212a3b;
+                --info-bg: #17203a;
+                --info-border: #2b3a5e;
+                --border-color: #2b3346;
+                --border-soft: #232b3c;
+                --accent-color: #f87171;
+                --danger-bg: #2a1719;
+                --danger-text: #fca5a5;
+                --warn-color: #fbbf24;
+                --warn-bg: #2a2113;
+                --warn-text: #fcd34d;
+                --code-bg: #1e2740;
+                --code-fg: #a5b4fc;
+                --code-border: #313c5e;
+                --ok-bg: #10321f;
+                --ok-fg: #6ee7a7;
+                --no-bg: #3a1a1f;
+                --no-fg: #fca5a5;
+                --shadow-sm: 0 1px 2px rgba(0, 0, 0, .35);
+                --shadow-card: 0 0 26px rgba(0, 0, 0, .45);
+            }
+        }
+
+        /* ===== 基础排版 ===== */
+        *, *::before, *::after { box-sizing: border-box; }
+        html {
+            color-scheme: light dark;
+            -webkit-text-size-adjust: 100%;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: var(--font-sans);
+            font-size: 1.0625rem;
+            line-height: 1.85;
+            letter-spacing: .012em;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0 clamp(12px, 3vw, 28px);
+            -webkit-font-smoothing: antialiased;
+        }
+        /* 正文区：白色内容区上下通栏，仅左右留出灰色底 */
+        .container {
+            max-width: var(--content-width);
+            min-height: 100vh;
+            margin: 0 auto;
+            padding: clamp(28px, 4vw, 56px) clamp(20px, 3.4vw, 46px) clamp(40px, 5vw, 72px);
+            background: var(--card-bg);
+            box-shadow: var(--shadow-card);
+        }
+        p { margin: 0 0 1.15em; overflow-wrap: break-word; }
+        strong { font-weight: 700; color: var(--heading-color); }
+        ::selection { background: var(--primary-soft); color: var(--heading-color); }
+        a { color: var(--primary-dark); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+        a:hover { color: var(--primary-color); text-decoration-thickness: 2px; }
+        a:focus-visible { outline: 2px solid var(--primary-color); outline-offset: 2px; border-radius: 3px; }
+        a.inline-link { font-weight: 600; text-decoration-color: var(--primary-soft); }
+        a.inline-link:hover { text-decoration-color: currentColor; }
+        code {
+            font-family: var(--font-mono);
+            font-size: .875em;
+            font-weight: 600;
+            background: var(--code-bg);
+            color: var(--code-fg);
+            border: 1px solid var(--code-border);
+            border-radius: 6px;
+            padding: .1em .42em;
+            white-space: nowrap;
+        }
+
+        /* ===== 标题层级 ===== */
+        header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.4rem;
+            margin-bottom: 2.2rem;
+        }
+        h1 {
+            font-size: clamp(1.5rem, 4.4vw, 2.05rem);
+            font-weight: 800;
+            line-height: 1.42;
+            letter-spacing: -.01em;
+            color: var(--heading-color);
+            margin: 0;
+            text-wrap: balance;
+        }
+        .meta-info { font-size: .9rem; color: var(--text-muted); display: flex; gap: 15px; flex-wrap: wrap; margin-top: 1rem; }
+        .update-tag { color: var(--accent-color); font-weight: 700; }
+        h2 {
+            position: relative;
+            font-size: clamp(1.28rem, 3.4vw, 1.5rem);
+            font-weight: 800;
+            line-height: 1.5;
+            color: var(--heading-color);
+            margin: 3.4rem 0 1.3rem;
+            padding-bottom: .5rem;
+            border-bottom: 2px solid var(--border-color);
+            scroll-margin-top: 24px;
+        }
+        h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 76px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+        h3 {
+            font-size: clamp(1.06rem, 2.6vw, 1.18rem);
+            font-weight: 700;
+            line-height: 1.6;
+            color: var(--heading-color);
+            margin: 2.4rem 0 1rem;
+            scroll-margin-top: 24px;
+        }
+        .container > section:first-of-type > p { font-size: 1.04em; }
+
+        /* ===== 信息卡片 / 提示框 ===== */
+        .feature-box {
+            background: var(--info-bg);
+            border: 1px solid var(--info-border);
+            border-radius: var(--radius);
+            padding: 1.15rem 1.35rem;
+            margin: 0 0 1.8rem;
+        }
+        .feature-box p { margin: .5em 0; }
+        .feature-box p:first-child { margin-top: 0; }
+        .feature-box p:last-child { margin-bottom: 0; }
+        .feature-box p > strong:first-child { color: var(--primary-dark); }
+        .warning-box {
+            background: var(--danger-bg);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 4px var(--radius) var(--radius) 4px;
+            padding: 1rem 1.2rem;
+            margin: 1.6rem 0;
+        }
+        .warning-box p { margin: 0; color: var(--danger-text); font-weight: 500; }
+        .warning-box br { display: block; content: ""; margin-top: .4em; }
+        .warning-box.tip-box { background: var(--warn-bg); border-left-color: var(--warn-color); }
+        .warning-box.tip-box p { color: var(--warn-text); }
+        .warning-box.nested { margin: 1rem 0 0; padding: .85rem 1.05rem; font-size: .97em; }
+
+        /* ===== 操作步骤 ===== */
+        .steps-list { list-style: none; margin: 0 0 1.6rem; padding: 0; }
+        .steps-list > li {
+            list-style: none;
+            position: relative;
+            margin: 0 0 1.2rem;
+            padding: 1.2rem 1.4rem;
+            background: var(--surface);
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--primary-color);
+            border-radius: 4px var(--radius) var(--radius) 4px;
+            box-shadow: var(--shadow-sm);
+        }
+        .step-title {
+            display: block;
+            font-size: 1.06em;
+            font-weight: 700;
+            line-height: 1.6;
+            color: var(--primary-dark);
+            margin: 0 0 .6em;
+            padding-bottom: .5em;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        .steps-list > li br { display: block; content: ""; margin-top: .45em; }
+        .steps-list > li > .warning-box:last-child { margin-bottom: 0; }
+
+        /* ===== 教程截图区 ===== */
+        .tutorial-image-container {
+            margin: 0 0 1.2rem;
+            padding: .8rem;
+            border: 1px dashed var(--border-color);
+            border-radius: var(--radius);
+            background: var(--surface);
+            text-align: center;
+        }
+        .tutorial-image-container img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            border-radius: 8px;
+            font-size: .9rem;
+            color: var(--text-muted);
+        }
+        .tutorial-image-caption { font-size: .86rem; color: var(--text-muted); margin: .7rem 0 0; line-height: 1.7; }
+
+        /* ===== 对比表格 ===== */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin: 1.6rem 0 2rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            -webkit-overflow-scrolling: touch;
+        }
+        table {
+            width: 100%;
+            min-width: 540px;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: .95rem;
+            background-color: var(--card-bg);
+        }
+        th {
+            background: var(--surface-2);
+            color: var(--heading-color);
+            font-weight: 700;
+            padding: 13px 16px;
+            border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border-soft);
+            color: var(--text-color);
+            vertical-align: top;
+            line-height: 1.75;
+        }
+        tbody tr:nth-child(even) { background: var(--surface); }
+        tbody tr:last-child td { border-bottom: none; }
+        td:last-child > strong:first-child { color: var(--primary-dark); }
+        .badge-free, .badge-paid {
+            display: inline-block;
+            padding: .18em .7em;
+            border-radius: 999px;
+            font-size: .82rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .badge-free { background-color: var(--ok-bg); color: var(--ok-fg); }
+        .badge-paid { background-color: var(--no-bg); color: var(--no-fg); }
+
+        /* ===== 页脚 ===== */
+        footer {
+            margin-top: 3.6rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: .86rem;
+            line-height: 1.8;
+        }
+
+        /* ===== 移动端适配 ===== */
+        @media (max-width: 640px) {
+            body { font-size: 1rem; line-height: 1.8; padding: 0 10px; }
+            .container { padding: 24px 16px 36px; }
+            h2 { margin-top: 2.6rem; }
+            h3 { margin-top: 2rem; }
+            .feature-box { padding: 1rem 1.1rem; }
+            .warning-box { padding: .9rem 1.05rem; }
+            .steps-list > li { padding: 1.05rem 1.1rem; }
+            th, td { padding: 12px 13px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>2026 苹果手机免 Shadowrocket 共享翻墙与免翻替代全攻略（Windows/Mac双平台保姆级教程）</h1>
+        </header>
+
+        <section>
+            <p>很多刚使用苹果手机（iPhone）的小白用户会发现，国内 App Store 没办法直接下载 <strong>Shadowrocket（俗称小火箭）</strong>。这就产生了一个很尴尬的死循环：<strong>手机想要翻墙需要下载小火箭，但是想要下载小火箭又必须先翻墙</strong>。其实，只要你手头有一台已经能够正常翻墙的 Windows 电脑或 Mac 电脑<a href="#" class="inline-link" title="电脑翻墙教程">（翻墙机场和教程）</a>，或者学会用免费的替代软件，就能轻松打破这个僵局。本文就用大白话手把手教你两种最简单的解决方法。</p>
+        </section>
+
+        <section>
+            <h2>一、阶段一：利用电脑 Clash 共享网络（最快速、手机不用装任何软件）</h2>
+            <div class="feature-box">
+                <p><strong>服务特点：</strong> 只要 iPhone 和电脑连着<strong>同一个 Wi-Fi</strong>，就能把电脑当成网络中转站，让手机借用电脑的节点直接上网。</p>
+                <p><strong>方案成本：</strong> 0 元（完全免费）。</p>
+                <p><strong>客户端支持：</strong> 全平台电脑通用（以 Windows 端最新的 <strong>Clash Verge v2.5.2</strong> 为例）。</p>
+            </div>
+            
+            <div class="warning-box">
+                <p>⚠ 注意：这个方法需要电脑一直开机、不能休眠，而且手机和电脑必须连着同一个 Wi-Fi。</p>
+            </div>
+
+            <h3>🛠 核心配置实操流程</h3>
+            <ul class="steps-list">
+                <li>
+                    <span class="step-title">第一步：电脑端 Clash Verge 核心设置</span>
+                    打开电脑上正在运行的 <strong>Clash Verge</strong> 客户端。<br>
+                    1. 点击左侧导航栏的 <strong>“设置” (Settings)</strong>。<br>
+                    2. 在通用设置中，找到 <strong>“局域网连接”</strong> 开关，将右侧开关<strong>打开（变成蓝色或绿色）</strong>。<br>
+                    3. 此时无需到处寻找，新版软件默认的 <strong>端口号 (Port) 通常为 <code>7897</code></strong>。
+                </li>
+                <li>
+                    <span class="step-title">第二步：一键获取电脑的“局域网 IP 地址”</span>
+                    在新版 Clash Verge 中，获取 IP 非常简单，完全不需要打开电脑的黑窗口命令行：<br>
+                    1. 直接点击 <strong>“局域网连接”右侧的小图标（通常是个小电脑或分享图标）</strong>，软件会自动弹窗显示你当前电脑的所有局域网 IP 地址。<br>
+                    2. 找到形如 <code>192.168.X.X</code> 或 <code>10.0.X.X</code> 的地址并记录下来（例如：<code>192.168.1.125</code>）。
+                </li>
+
+                <!-- 电脑端 1、2、3 步核心操作截图占位符 -->
+                <div class="tutorial-image-container">
+                    <img width="1474" height="1042" alt="Clash Verge 局域网连接与IP查看操作截图" src="https://github.com/user-attachments/assets/ed15def8-8afd-446c-b75d-0c7001b59d69" />
+                    <p class="tutorial-image-caption">💡 电脑端操作对照图（包含局域网开启、IP查看、端口确认）</p>
+                </div>
+
+                <li>
+                    <span class="step-title">第三步：【关键步骤】让 Windows 防火墙允许手机连接</span>
+                    Windows 防火墙默认会挡住手机的连接，<strong>这一步必须做，否则手机连上后会彻底断网</strong>：<br>
+                    1. 在电脑左下角搜索框输入 <strong>“高级安全 Windows 防火墙”</strong> 并打开。<br>
+                    2. 点击左边栏的 <strong>“入站规则”</strong>，再点击右边栏的 <strong>“新建规则...”</strong>。<br>
+                    3. 选择 <strong>“端口”</strong> -> 点击下一步。<br>
+                    4. 选择 <strong>TCP</strong>，在下面填入刚才 Clash 的端口号（例如 <code>7897</code>） -> 点击下一步。<br>
+                    5. 选择 <strong>“允许连接”</strong> -> 后面一路点击下一步 -> 最后随便取个名字（比如 <code>Clash共享</code>）保存即可。
+                </li>
+                <li>
+                    <span class="step-title">第四步：iPhone 手机端设置</span>
+                    拿起 iPhone，打开“设置” -> 进入“无线局域网 (Wi-Fi)”。<br>
+                    1. 确保跟电脑连的是同一个 Wi-Fi，点击 Wi-Fi 名字右边的 <strong>“i”蓝色圆圈图标</strong>。<br>
+                    2. 划到最下面，点击 <strong>“配置代理”</strong> -> 选中 <strong>“手动”</strong>。<br>
+                    3. 依次填入刚刚查到的信息：<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- <strong>服务器：</strong> 输入第二步查到的电脑 IP 地址（如： <code>192.168.1.125</code>）。<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- <strong>端口：</strong> 输入第一步记下的端口号（如： <code>7897</code>）。<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- <strong>认证：</strong> 保持关闭，不用动。<br>
+                    4. 点击右上角的 <strong>“存储”</strong>。现在打开手机浏览器，就可以正常上网了。
+                </li>
+            </ul>
+
+            <div class="warning-box tip-box">
+                <p>💡 日常使用避坑提示：<br>
+                1. <strong>出门直接用，不用管</strong>：带手机出门用 4G/5G 移动网络时，不需要去改任何设置，手机能正常上国内的网络。<br>
+                2. <strong>电脑关机或不用时要关闭</strong>：如果你在家把电脑关了、或者把电脑上的 Clash 退出了，只要手机还连着家里的 Wi-Fi，就会因为找不到电脑而<strong>彻底断网</strong>（国内网站也打不开）。这时候必须回到手机 Wi-Fi 设置里，把“配置代理”改回<strong>“关闭”</strong>，手机才能恢复上网。</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>二、阶段二：利用自备美区 Apple ID 下载手机端软件（独立上网、随时随地用）</h2>
+            <div class="feature-box">
+                <p><strong>服务特点：</strong> 既然我们已经通过“阶段一”让手机临时连上了外网，就可以趁热打铁，在 iPhone 上下载能够独立运行的手机端客户端。配置完成后，手机就能完全脱离电脑，出门使用 4G/5G 移动网络也能随时随地顺畅上网。</p>
+                <p><strong>前置准备：</strong> 进行本阶段操作前，<strong>需要您自己提前准备好一个美区 Apple ID</strong>。由于网络上公开的免费共享账号极不稳定、经常密码错误，甚至存在锁机风险，为了您的隐私和手机安全，<strong>强烈不推荐使用任何公共共享账号</strong>。</p>
+            </div>
+
+            <h3>📊 2026 精选 iOS 手机客户端对比评测</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">客户端名称</th>
+                            <th style="width: 20%;">费用档次</th>
+                            <th style="width: 60%;">新手友好度与核心特点</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 免费板块 -->
+                        <tr>
+                            <td><strong>Sing-box</strong></td>
+                            <td><span class="badge-free">完全免费 / 无广告</span></td>
+                            <td><strong>【免费首选】</strong> 官方完全免费且开源。它的运行速度非常快，低延迟，而且在手机上使用很省电、不易发热。在美区 App Store 搜索到就能直接下载，完美兼容你平时在电脑上使用的 Clash 节点订阅。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>V2Box / FoXray</strong></td>
+                            <td><span class="badge-free">完全免费</span></td>
+                            <td><strong>【免费替代】</strong> 同样是一分钱不用花的宝藏软件，界面更加简单传统。如果你使用的网络提供商直接给你一串长长的明文链接（如 vmess://、vless:// ），用它直接扫码或者复制导入极其方便。</td>
+                        </tr>
+                        <!-- 付费板块 -->
+                        <tr>
+                            <td><strong>Stash</strong></td>
+                            <td><span class="badge-paid">约 3.99 美元</span></td>
+                            <td><strong>【付费推荐】</strong> 被称为 iOS 平台上的“正统 Clash”。软件的界面、图标、操作逻辑与你电脑上用的 Clash 极为相似。如果预算充足且不会折腾，推荐用它来获得最佳的手机上网体验。*(注：需要账号内有余额才能下载)*</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Shadowrocket</strong></td>
+                            <td><span class="badge-paid">约 2.99 美元</span></td>
+                            <td><strong>【付费老牌】</strong> 俗称“小火箭”，是苹果手机上最知名的老牌代理工具。支持的协议非常全面，网上能找到的规则和教程也是最多的。*(注：需要账号内有余额才能下载)*</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>🛠 实操执行全攻略</h3>
+            <ul class="steps-list">
+                <li>
+                    <span class="step-title">1. 安全登录自备的美区 Apple ID</span>
+                    因为国内应用商店屏蔽了所有网络加速工具，我们必须切换到美区商店。打开 iPhone 自带的 <strong>App Store</strong>（应用商店），点击右上角个人头像，拉到最底部点击 <strong>“登出” (Sign Out)</strong>。然后，在原地登录你自己的美区 Apple ID。<br>
+                    <div class="warning-box nested">
+                        <p>⚠ 新手安全避坑提示：千万不要在 iPhone 系统的全局“设置”里登录别人的账号，一定要在 App Store 这个单独的软件内登录！这可以 100% 防止因为网络或账号异常导致你的整台手机被远程锁死。</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="step-title">2. 搜索并下载对应的软件（注意付费门槛）</span>
+                    登录成功且 App Store 界面自动刷新切换为美区后，在搜索框中输入你决定使用的软件名称：<br>
+                    • 如果选择<strong>免费软件（如 Sing-box）</strong>：直接点击下载安装即可，不会弹出任何付费提示。<br>
+                    • 如果选择<strong>付费软件（如 Stash / 小火箭）</strong>：由于国内的微信、支付宝和银联卡无法直接在美区商店付款，你需要先去正规平台购买「美区 Apple Gift Card（礼品卡）」充值到你的美区账号内，余额足够后才能点击下载。
+                </li>
+                <li>
+                    <span class="step-title">3. 导入配置与过河拆桥（关闭阶段一代理）</span>
+                    下载完成后打开软件。去你购买网络加速服务的网站，复制你的 <strong>Clash 订阅链接</strong>，粘贴到 App 里的配置栏中（通常叫 Profiles 或 Config）同步节点列表。<br>
+                    <strong>最关键的一步来了：</strong> 当手机成功同步出节点并测试可用后，请立刻回到 iPhone 的“设置” -> “无线局域网 (Wi-Fi)”，把你在阶段一设置的<strong>“配置代理”重新改回“关闭”</strong>！<br>
+                    现在，回到手机新下载的软件主页，点击 <strong>“开启 / Connect”</strong> 开关并允许添加 VPN 权限。你的苹果手机从此就可以完全脱离电脑，在外面用 4G/5G 也能实现随时随地自由独立上网了！
+                </li>
+            </ul>
+        </section>
+
+
+
+
+
+        <footer>
+            © 2026 技术干货分享. 本教程仅供网络技术交流与正当科研、学习使用，请严格遵守当地法律法规。
+        </footer>
+    </div>
+</body>
+</html>
