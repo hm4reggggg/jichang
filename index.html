@@ -142,7 +142,9 @@
             letter-spacing: -.01em;
             color: var(--heading-color);
             margin: 0;
-            text-wrap: balance;
+            text-align: center;
+            /* Article titles should wrap naturally instead of being rebalanced. */
+            text-wrap: normal;
         }
         .meta-info { font-size: .9rem; color: var(--text-muted); display: flex; gap: 15px; flex-wrap: wrap; margin-top: 1rem; }
         .update-tag { color: var(--accent-color); font-weight: 700; }
