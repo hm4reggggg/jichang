@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MHT 批量转 HTML · 纯本地转换</title>
+<style>
+  :root{
+    --bg:#f6f7fb;
+    --panel:#ffffff;
+    --ink:#1b1f2a;
+    --ink-2:#5a6377;
+    --ink-3:#8b93a7;
+    --line:#e4e7ef;
+    --line-2:#eef0f6;
+    --brand:#3b6ef6;
+    --brand-2:#6f8cf8;
+    --brand-soft:#eef3ff;
+    --ok:#0f9d58;
+    --ok-soft:#e8f7ef;
+    --warn:#b7791f;
+    --warn-soft:#fdf5e6;
+    --err:#d93025;
+    --err-soft:#fdecea;
+    --radius:14px;
+    --shadow:0 1px 2px rgba(20,30,60,.04),0 8px 24px rgba(20,30,60,.06);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(1200px 500px at 15% -8%,#eaf0ff 0%,rgba(234,240,255,0) 60%),
+      radial-gradient(900px 400px at 95% 0%,#f0f7ff 0%,rgba(240,247,255,0) 55%),
+      var(--bg);
+    color:var(--ink);
+    font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:36px 22px 80px}
+
+  /* ---------- 头部 ---------- */
+  header.top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{
+    width:42px;height:42px;border-radius:12px;flex:none;
+    background:linear-gradient(140deg,var(--brand),var(--brand-2));
+    color:#fff;display:flex;align-items:center;justify-content:center;
+    font-size:17px;font-weight:700;letter-spacing:.5px;
+    box-shadow:0 6px 16px rgba(59,110,246,.28);
+  }
+  h1{margin:0;font-size:21px;letter-spacing:-.2px}
+  .sub{margin:2px 0 0;color:var(--ink-2);font-size:13.5px}
+  .tag{
+    display:inline-flex;align-items:center;gap:6px;
+    background:var(--ok-soft);color:var(--ok);
+    border:1px solid #cfeadd;border-radius:999px;
+    padding:5px 11px;font-size:12.5px;font-weight:600;white-space:nowrap;
+  }
+  .dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+
+  /* ---------- 卡片 ---------- */
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:16px}
+
+  /* ---------- 拖拽区 ---------- */
+  #dropZone{
+    border:1.5px dashed #c9d3e8;border-radius:var(--radius);
+    background:#fbfcff;padding:30px 20px;text-align:center;cursor:pointer;
+    transition:border-color .15s,background .15s,transform .15s;
+    user-select:none;
+  }
+  #dropZone:hover{border-color:var(--brand-2);background:var(--brand-soft)}
+  #dropZone.drag{border-color:var(--brand);background:var(--brand-soft);transform:scale(1.006)}
+  #dropZone .big{font-size:15.5px;font-weight:600;margin-bottom:4px}
+  #dropZone .small{color:var(--ink-3);font-size:13px}
+  #dropZone .ico{font-size:26px;line-height:1;margin-bottom:8px;opacity:.85}
+  .kbd{border:1px solid var(--line);background:#fff;border-radius:6px;padding:1px 6px;font-size:12px;color:var(--ink-2)}
+
+  /* ---------- 选项 ---------- */
+  .opts{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+  .opt{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink-2);cursor:pointer}
+  .opt input{width:16px;height:16px;accent-color:var(--brand);cursor:pointer;margin:0}
+  .opt .hint{color:var(--ink-3);font-size:12.5px}
+  .opts-title{font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--ink-3);width:100%;margin-bottom:2px}
+
+  /* ---------- 按钮 ---------- */
+  .bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  button{
+    font:inherit;font-size:14px;font-weight:600;
+    border-radius:10px;border:1px solid var(--line);
+    background:#fff;color:var(--ink);
+    padding:9px 16px;cursor:pointer;
+    transition:background .15s,border-color .15s,box-shadow .15s,opacity .15s;
+  }
+  button:hover:not(:disabled){background:#f7f8fc;border-color:#d6dbe8}
+  button:disabled{opacity:.45;cursor:not-allowed}
+  button.primary{
+    background:linear-gradient(140deg,var(--brand),var(--brand-2));
+    border-color:transparent;color:#fff;
+    box-shadow:0 6px 16px rgba(59,110,246,.22);
+  }
+  button.primary:hover:not(:disabled){filter:brightness(1.05)}
+  button.ghost{background:transparent;border-color:transparent;color:var(--ink-2)}
+  button.ghost:hover:not(:disabled){background:#f2f4f9}
+  button.mini{padding:5px 10px;font-size:12.5px;border-radius:8px;font-weight:500}
+  .spacer{flex:1}
+
+  /* ---------- 进度 ---------- */
+  #progressWrap{display:none}
+  #progressWrap.show{display:block}
+  .track{height:8px;background:#eceff6;border-radius:999px;overflow:hidden}
+  .fill{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--brand),var(--brand-2));transition:width .2s}
+  .prow{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-2);margin-bottom:8px}
+
+  /* ---------- 统计 ---------- */
+  .stats{display:flex;gap:22px;flex-wrap:wrap;font-size:13.5px;color:var(--ink-2)}
+  .stats b{color:var(--ink);font-weight:700}
+
+  /* ---------- 文件表 ---------- */
+  .tblwrap{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line-2);vertical-align:middle}
+  th{font-size:12px;color:var(--ink-3);font-weight:600;letter-spacing:.3px;text-transform:uppercase;background:#fafbfe}
+  th:first-child{border-top-left-radius:10px}
+  th:last-child{border-top-right-radius:10px}
+  tbody tr:hover{background:#fafbff}
+  .fname{max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
+  .muted{color:var(--ink-3)}
+  .num{font-variant-numeric:tabular-nums;color:var(--ink-2)}
+  .cell-ops{white-space:nowrap;text-align:right}
+  .badge{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap}
+  .b-wait{background:#f1f3f9;color:var(--ink-2)}
+  .b-run{background:var(--brand-soft);color:var(--brand)}
+  .b-ok{background:var(--ok-soft);color:var(--ok)}
+  .b-warn{background:var(--warn-soft);color:var(--warn)}
+  .b-err{background:var(--err-soft);color:var(--err)}
+  .row-detail>td{background:#fafbfe;padding:0}
+  .detail{padding:12px 14px;font-size:13px;color:var(--ink-2)}
+  .detail h4{margin:0 0 6px;font-size:12.5px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.4px}
+  .detail ul{margin:0;padding-left:18px}
+  .detail li{margin:2px 0;word-break:break-all}
+  .detail + .detail{border-top:1px solid var(--line-2)}
+  .empty{padding:26px;text-align:center;color:var(--ink-3);font-size:13.5px}
+
+  /* ---------- 预览弹窗 ---------- */
+  #previewMask{display:none;position:fixed;inset:0;background:rgba(16,20,30,.55);z-index:60;padding:24px}
+  #previewMask.show{display:flex;flex-direction:column}
+  .pv-box{background:#fff;border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;flex:1;min-height:0;box-shadow:0 20px 60px rgba(10,16,32,.3)}
+  .pv-head{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid var(--line);background:#fafbfe}
+  .pv-head .t{font-weight:600;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+  #previewFrame{flex:1;width:100%;border:0;background:#fff}
+
+  /* ---------- 提示 ---------- */
+  #toast{
+    position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(10px);
+    background:#1b1f2a;color:#fff;padding:10px 18px;border-radius:10px;font-size:13.5px;
+    max-width:min(780px,calc(100vw - 40px));text-align:center;line-height:1.55;
+    box-shadow:0 10px 30px rgba(10,16,32,.25);
+    opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:90;
+  }
+  #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  footer.note{margin-top:26px;color:var(--ink-3);font-size:12.5px;line-height:1.9}
+  footer.note code{background:#f1f3f9;border-radius:5px;padding:1px 5px;font-size:12px}
+  @media (max-width:640px){
+    .wrap{padding:22px 14px 60px}
+    .fname{max-width:150px}
+    th:nth-child(4),td:nth-child(4){display:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand">
+      <div class="logo">M&#8594;H</div>
+      <div>
+        <h1>MHT 批量转 HTML</h1>
+        <p class="sub">一次选中多个 <code>.mht / .mhtml</code>，转换为可双击直接打开的自包含 HTML</p>
+      </div>
+    </div>
+    <span class="tag"><i class="dot"></i>100% 浏览器本地处理 · 不上传文件</span>
+  </header>
+
+  <section class="card">
+    <div id="dropZone">
+      <div class="ico">&#128193;</div>
+      <div class="big">把 .mht / .mhtml 文件拖到这里，或点击选择</div>
+      <div class="small">支持批量 · 单个文件上限 20MB · 可随时追加文件（已有转换结果会保留）</div>
+    </div>
+    <input id="fileInput" type="file" multiple accept=".mht,.mhtml,.mhtx,message/rfc822" hidden>
+  </section>
+
+  <section class="card">
+    <div class="opts">
+      <div class="opts-title">转换选项</div>
+      <label class="opt"><input id="optInlineStyle" type="checkbox" checked>样式内联为 <code>&lt;style&gt;</code><span class="hint">（最可靠）</span></label>
+      <label class="opt"><input id="optDisableJs" type="checkbox">移除页面脚本 <span class="hint">（避免离线 JS 报错影响版式）</span></label>
+      <label class="opt"><input id="optBom" type="checkbox" checked>输出加 UTF-8 BOM <span class="hint">（防中文乱码）</span></label>
+      <label class="opt"><input id="optStripMissing" type="checkbox">移除未归档的外链引用 <span class="hint">（离线不再发起网络请求）</span></label>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="bar">
+      <button id="btnConvert" class="primary" disabled>开始转换</button>
+      <button id="btnZip" disabled>打包下载 ZIP</button>
+      <button id="btnClear" class="ghost" disabled>清空列表</button>
+      <div class="spacer"></div>
+      <div class="stats" id="stats"></div>
+    </div>
+    <div id="progressWrap" style="margin-top:14px">
+      <div class="prow"><span id="progressText">准备中…</span><span id="progressPct">0%</span></div>
+      <div class="track"><div class="fill" id="progressFill"></div></div>
+    </div>
+  </section>
+
+  <section class="card" style="padding:0">
+    <div class="tblwrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:34%">文件名</th>
+            <th style="width:10%">大小</th>
+            <th style="width:12%">状态</th>
+            <th style="width:12%">资源</th>
+            <th style="width:12%">输出</th>
+            <th style="width:20%;text-align:right">操作</th>
+          </tr>
+        </thead>
+        <tbody id="fileList"></tbody>
+      </table>
+    </div>
+    <div id="emptyHint" class="empty">还没有文件，先在上方添加 .mht 文件吧</div>
+  </section>
+
+  <footer class="note">
+    转换逻辑（MIME 解析、quoted-printable / base64 解码、编码嗅探、<code>cid:</code> 与
+    <code>url()</code> 重写、ZIP 打包）全部在浏览器内完成，不会向服务器发送任何文件内容。<br>
+    转换结果只保存在当前页面的内存里，<b>刷新或关闭页面即消失</b>，请及时下载或打包保存。<br>
+    MHT 只保存了"另存为"那一刻的资源；原页面依赖 CDN 接口或 JS 动态生成的资源，离线无法凭空补出，这类引用会在详情里列出。
+  </footer>
+</div>
+
+<div id="previewMask">
+  <div class="pv-box">
+    <div class="pv-head">
+      <span class="t" id="previewTitle">预览</span>
+      <button class="mini" id="previewOpen">新窗口打开</button>
+      <button class="mini" id="previewClose">关闭</button>
+    </div>
+    <iframe id="previewFrame" sandbox="allow-scripts allow-forms allow-modals allow-popups" referrerpolicy="no-referrer"></iframe>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<!-- 转换核心（经典脚本，保证 file:// 双击可用） -->
+<script src="js/mime.js"></script>
+<script src="js/decode.js"></script>
+<script src="js/rewrite.js"></script>
+<script src="js/convert.js"></script>
+<script src="js/zip.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
