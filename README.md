@@ -28,8 +28,8 @@
 
 ---
 
-## ✈️ [KTM](https://ktmcloud001.top/#/register?code=VzxJf1YX#tt) （主打：流量大）
-
+## ✈️ [KTM](https://url.ktm001.vip/#/register?code=VzxJf1YX#tt) （主打：流量大）
+#### 订阅有更新
 * **特点**：大容量套餐，每 GB 单价极低，量大管饱，适合重度网络用户和多设备党。
 * **价格**：¥13.98 / 月 / 1024G月，¥20.97 / 季 / 500G月，¥389 / 永久 / 中转1024G月，¥499 / 永久 / 纯IEPL专线150G月
 * **支持**：Hysteria2 协议，全平台客户端支持，完美解锁各大主流媒体。推荐Clash-verge / Shadowrocket.
