@@ -17,7 +17,7 @@
 
 ---
 
-## ✈️ [魔戒1](https://47.242.128.61:8000/register?aff=BgXQqfTR#tt) &ensp; [魔戒2](https://43.129.78.33:8000/register?aff=BgXQqfTR#tt) （主打：不清零）
+## ✈️ [魔戒1](https://74.82.196.10:8000/register?aff=1pWspTHg#tt) &ensp; [魔戒2](https://43.129.78.33:8000/register?aff=BgXQqfTR#tt) （主打：不清零）
 
 * **特点**：一次性购买，流量永久有效，用多少扣多少，彻底告别到期作废的焦虑。
 * **价格**：¥19.9 / 130G（一次性包）｜ ¥29.9 / 210G（一次性包）
