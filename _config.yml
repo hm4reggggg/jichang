@@ -3,6 +3,12 @@ tagline: "自用稳定机场测评推荐"
 description: "2026年最新稳定机场测评推荐。自用非广，3年+老牌翻墙机场。包括不限时流量不清零、低价大流量性价比、高可用多节点稳定等三种类型，同步分享各平台新手客户端配置教程与技术指南，定时更新最新可用官方文档"
 lang: "zh-CN"
 
+# 告訴 GitHub Pages，首頁的實體檔案由 README.md 來生成
+permalink: /index.html
+
+# 保持您原本的 Markdown 渲染機制
+markdown: kramdown
+
 url: "https://airforceone.top/"
 baseurl: "" 
 
