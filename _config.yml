@@ -10,7 +10,7 @@ permalink: /index.html
 markdown: kramdown
 
 url: "https://airforceone.top"
-baseurl: "" 
+baseurl: "index.html" 
 
 # 1. 启用自动处理标题的插件
 plugins:
