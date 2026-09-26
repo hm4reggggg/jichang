@@ -20,3 +20,9 @@ plugins:
 titles_from_headings:
   enabled: true
   strip_title: true
+# 🌟 新增下方這段核心配置：強制讓首頁套用預設的主題排版
+defaults:
+  - scope:
+      path: "" # 代表全站，包含自動生成的 index.html
+    values:
+      layout: "default" # 套用主題的預設寬度居中樣式
