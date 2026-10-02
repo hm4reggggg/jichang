@@ -353,7 +353,7 @@
     state.previewItem = item;
     var frame = els.previewFrame;
     frame.removeAttribute('src');
-    // 用 srcdoc + 沙箱 iframe：脚本可运行（保证版式与原页一致），但拿不到本工具页的权限
+    // 用 srcdoc + 沙箱 iframe：沙箱已禁用脚本执行（无 allow-scripts），防止 MHT 内嵌恶意脚本运行
     frame.srcdoc = htmlOf(item);
     els.previewTitle.textContent = outName(item.name);
     els.previewMask.classList.add('show');
