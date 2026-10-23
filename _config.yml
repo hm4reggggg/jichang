@@ -3,19 +3,19 @@ tagline: "自用稳定机场测评推荐"
 description: "2026年最新稳定机场测评推荐。自用非广，3年+老牌翻墙机场。包括不限时流量不清零、低价大流量性价比、高可用多节点稳定等三种类型，同步分享各平台新手客户端配置教程与技术指南，定时更新最新可用官方文档"
 lang: "zh-CN"
 
+
 # 保持您原本的 Markdown 渲染機制
 markdown: kramdown
 
-# 網址設定
+# 🌟 重點確認 1：網址必須是乾淨的，結尾絕對不能加 index.html，這點非常關鍵
 url: "https://airforceone.top"
 baseurl: "" 
 
-# 插件設定
+# 启用自动处理标题的插件
 plugins:
   - jekyll-titles-from-headings
-  - jekyll-remote-theme          # 啟用遠端主題插件
 
-# 標題自動處理
+# 2. 更改为开启状态，并设置剥离正文中的首个 h1
 titles_from_headings:
   enabled: true
   strip_title: true
@@ -23,18 +23,14 @@ titles_from_headings:
 # 讓首頁套用預設的主題排版
 defaults:
   - scope:
-      path: "" 
+      path: "" # 代表全站
     values:
-      layout: "default"
+      layout: "default" # 套用主題的預設寬度居中樣式
+
+  # 🌟 重點確認 2：直接在 defaults 中，利用 GitHub 預設主題都能識別的 canonical 變數
   - scope:
       path: "README.md"
     values:
       canonical: "https://airforceone.top"
-
-# 🌟 這裡修正為官方正確的主題倉庫路徑
-remote_theme: pages-themes/cayman@v0.2.0
-
-# 填入你的 GA4 衡量 ID
-google_analytics: G-BHRRD1DW3
 
 
