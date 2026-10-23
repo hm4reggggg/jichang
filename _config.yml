@@ -13,7 +13,7 @@ baseurl: ""
 # 插件設定
 plugins:
   - jekyll-titles-from-headings
-  - jekyll-remote-theme          # 🌟 重點：啟用遠端主題插件（GitHub 官方允許的白名單外掛）
+  - jekyll-remote-theme          # 啟用遠端主題插件
 
 # 標題自動處理
 titles_from_headings:
@@ -31,13 +31,10 @@ defaults:
     values:
       canonical: "https://airforceone.top"
 
-# 🌟 重點修改處：
-# 1. 註銷掉原本老舊的內建主題
-# theme: jekyll-theme-cayman 
+# 🌟 這裡修正為官方正確的主題倉庫路徑
+remote_theme: pages-themes/cayman@v0.2.0
 
-# 2. 改用由社群維護、完美支援 GA4 的最新遠端 Cayman 主題
-remote_theme: jekyll-themes/cayman-theme
-
-# 3. 填入你的 GA4 衡量 ID
+# 填入你的 GA4 衡量 ID
 google_analytics: G-BHRRD1DW3
+
 
