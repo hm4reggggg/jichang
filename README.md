@@ -39,7 +39,7 @@
 
 ---
 
-## ✈️ [v2free1](https://w1.soxo.top/auth/register?code=QKu7#tt) （主打：节点多）
+## ✈️ [v2free1](https://w1.soxo.top/auth/register?code=QKu7#tt) &ensp; [v2free2](https://w2.xmoney.top/auth/register?code=QKu7#tt) &ensp; [v2free3](https://w1.xmoney.top/auth/register?code=QKu7#tt)  &ensp; [v2free4](https://cdn.xmoney.top/auth/register?code=QKu7#tt) （主打：节点多）
 #### 最近打开有点儿慢，多试试
 * **特点**：全球100+节点覆盖，原生 IP 丰富，抗封锁能力强，高峰期依然稳定，就是略贵。
 * **价格**：¥20 / 月 /100G，¥39 / 月 / 200G，更有 10人共享 套餐，1人独享原生IP家宽 套餐
