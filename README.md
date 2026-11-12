@@ -1,5 +1,5 @@
 # 🌐 自用稳定机场推荐分享，尽量每天来检查一下能不能打开
-### 检查点：2026.11.11
+### 检查点：2026.11.12
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=hm4reggggg.jichang)
 
 > 📢 **iOS 用户新手教程与避坑指南：**
