@@ -162,6 +162,27 @@
 
   footer.note{margin-top:26px;color:var(--ink-3);font-size:12.5px;line-height:1.9}
   footer.note code{background:#f1f3f9;border-radius:5px;padding:1px 5px;font-size:12px}
+
+  /* ---------- 底部引流位：项目推荐 ---------- */
+  .promo{
+    display:flex;align-items:center;gap:14px;margin-top:16px;padding:14px 16px;
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);text-decoration:none;color:inherit;
+    transition:border-color .15s,box-shadow .15s,transform .15s;
+  }
+  .promo:hover{border-color:#c9d8ff;box-shadow:0 10px 26px rgba(59,110,246,.14);transform:translateY(-1px)}
+  .promo:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+  .promo-icon{
+    flex:none;width:44px;height:44px;border-radius:11px;
+    background:var(--brand-soft);color:var(--brand);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .promo-icon svg{width:24px;height:24px;display:block}
+  .promo-body{flex:1;min-width:0}
+  .promo-title{display:block;font-size:14.5px;font-weight:600;margin-bottom:3px;color:var(--ink)}
+  .promo-desc{display:block;font-size:12.5px;color:var(--ink-3);line-height:1.6}
+  .promo-arrow{flex:none;font-size:13px;font-weight:600;color:var(--brand);white-space:nowrap}
+  @media (max-width:480px){ .promo{padding:12px 14px;gap:10px} .promo-arrow{display:none} }
   @media (max-width:640px){
     .wrap{padding:22px 14px 60px}
     .fname{max-width:150px}
@@ -241,6 +262,26 @@
     转换结果只保存在当前页面的内存里，<b>刷新或关闭页面即消失</b>，请及时下载或打包保存。<br>
     MHT 只保存了"另存为"那一刻的资源；原页面依赖 CDN 接口或 JS 动态生成的资源，离线无法凭空补出，这类引用会在详情里列出。
   </footer>
+
+  <!-- ==================== 引流位：项目推荐 ====================
+       改这里即可：href 换成目标地址，promo-title / promo-desc 换成文案
+       不需要时整块删掉
+  ================================================================== -->
+  <a class="promo" id="promoLink"
+     href="https://github.com/hm4reggggg/jichang"
+     target="_blank" rel="noopener noreferrer"
+     aria-label="稳定翻墙机场推荐">
+    <span class="promo-icon" aria-hidden="true">
+      <svg viewBox="0 0 16 16" fill="currentColor" role="img">
+        <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
+      </svg>
+    </span>
+    <span class="promo-body">
+      <span class="promo-title">稳定翻墙机场推荐</span>
+      <span class="promo-desc">2026年最新稳定机场推荐。3年+老牌翻墙机场，每日检查最新机场地址</span>
+    </span>
+    <span class="promo-arrow" aria-hidden="true">去看看 →</span>
+  </a>
 </div>
 
 <div id="previewMask">
