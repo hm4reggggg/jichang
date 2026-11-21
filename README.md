@@ -29,7 +29,7 @@
 
 ---
 
-## ✈️ [KTM] <!-- (http://134.175.54.55:33333/#/register?code=VzxJf1YX#tt) --> （主打：IEPL专线+大流量）
+## ✈️ [KTM](http://134.175.54.55:33333/#/register?code=VzxJf1YX#tt)（主打：IEPL专线+大流量）
 * **特点**：全线升级IEPL专线，推荐给需要稳定专线的朋友。
 * **价格**：¥20.97/季/500G月，¥27.96/月/2T月，¥10 / 月 / 纯IEPL专线45G，¥20 / 月 / 纯IEPL专线100G月，¥499 / 永久 / 纯IEPL专线150G月
 * **支持**：Hysteria2 协议，全平台客户端支持，完美解锁各大主流媒体。推荐Clash-verge / Shadowrocket.
