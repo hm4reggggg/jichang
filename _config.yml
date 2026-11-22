@@ -10,7 +10,7 @@ markdown: kramdown
 url: "https://airforceone.top"
 baseurl: "" 
 
-# 启用自动处理标题的插件
+# 1. 启用自动处理标题的插件
 plugins:
   - jekyll-titles-from-headings
 
@@ -18,16 +18,9 @@ plugins:
 titles_from_headings:
   enabled: true
   strip_title: true
-
-# 讓首頁套用預設的主題排版
+# 🌟 新增下方這段核心配置：強制讓首頁套用預設的主題排版
 defaults:
   - scope:
-      path: "" # 代表全站
+      path: "" # 代表全站，包含自動生成的 index.html
     values:
       layout: "default" # 套用主題的預設寬度居中樣式
-
-  # 🌟 重點確認 2：直接在 defaults 中，利用 GitHub 預設主題都能識別的 canonical 變數
-  - scope:
-      path: "README.md"
-    values:
-      canonical: "https://airforceone.top"
