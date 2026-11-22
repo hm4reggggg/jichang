@@ -6,4 +6,4 @@ permalink: /robots.txt
 User-agent: *
 Allow: /
 
-Sitemap: https://airforceone.top//sitemap.xml
+Sitemap: https://airforceone.top/sitemap.xml
